@@ -25,7 +25,15 @@
 
 ## 🏗️ 架构流程
 
-User (Input Topic) -> DeepSeek (Script/Keywords) -> [Parallel Download Pexels + Edge-TTS Audio] -> FFmpeg Combine -> Output MP4
+```mermaid
+graph LR
+    A[用户输入主题] --> B(DeepSeek AI 策划)
+    B --> C{解析 JSON}
+    C -->|Script| D[Edge-TTS 生成音频]
+    C -->|Keywords| E[并发下载 Pexels 素材]
+    E --> F[FFmpeg 渲染合成]
+    D --> F
+    F --> G[输出: final_movie.mp4]
 
 ## 🛠️ 快速开始 (Quick Start)
 
