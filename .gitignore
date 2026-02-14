@@ -1,0 +1,6 @@
+/output/
+*.mp4
+*.mp3
+temp_*
+.env
+autoclip-go  # 编译后的二进制文件
