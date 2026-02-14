@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"net/url" // <--- 新增：用来处理 URL 编码
+	"net/url"
 	"os"
 )
 
