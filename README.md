@@ -23,18 +23,18 @@
 * **🧹 自动化运维**: 
     * 任务完成后自动粉碎中间临时素材，保持工作目录整洁。
 
-## 🏗️ 架构流程
+## 🏗️ 架构流程 (Architecture)
 
 ```mermaid
 graph LR
     A[用户输入主题] --> B(DeepSeek AI 策划)
-    B --> C{解析 JSON}
+    B --> C{JSON 解析}
     C -->|Script| D[Edge-TTS 生成音频]
     C -->|Keywords| E[并发下载 Pexels 素材]
     E --> F[FFmpeg 渲染合成]
     D --> F
     F --> G[输出: final_movie.mp4]
-
+```
 ## 🛠️ 快速开始 (Quick Start)
 
 ### 1. 环境准备
@@ -54,7 +54,7 @@ graph LR
     go mod tidy
 
 ### 3. 配置密钥
-在.env文件填入你的 API Key：
+在项目根目录创建 `.env` 文件，并填入你的 API Key（**注意：不要将此文件提交到 GitHub**）：
 
     # .env
     DEEPSEEK_API_KEY=your_deepseek_key_here
@@ -72,16 +72,6 @@ graph LR
 
 程序运行结束后，成品视频将保存在 `./output/final_movie.mp4`。
 
-## 📂 项目结构
-
-    .
-    ├── main.go           # 主程序入口：编排整个流水线（AI -> 下载 -> 合成）
-    ├── llm.go            # AI 模块：负责与 DeepSeek API 交互及 JSON 清洗
-    ├── material.go       # 素材模块：负责 Pexels 视频搜索与并发下载
-    ├── utils.go          # 工具模块：文件清理等辅助功能
-    ├── go.mod            # Go 依赖定义
-    └── .env              # 配置文件（请勿提交到 Git）
-
 ## ⚙️ 参数说明
 
 | 参数 | 描述 | 默认值 |
@@ -97,10 +87,9 @@ graph LR
 - [x] 鲁棒的 JSON 解析器
 - [ ] 支持更多 LLM 模型 (OpenAI, Claude)
 
-
 ## 🤝 贡献 (Contributing)
 
-欢迎提交 Issue 或 Pull Request！如果你对 **Go 并发编程**感兴趣，请随时联系我。
+欢迎提交 Issue 或 Pull Request！如果你对 **Go 并发编程** 感兴趣，请随时联系我。
 
 ## 📄 许可证 (License)
 
